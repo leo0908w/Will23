@@ -54,6 +54,11 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, 2);
     }
 
+    public void test3(View v){
+        Intent intent = new Intent(this, Camera2Activity.class);
+        startActivityForResult(intent, 3);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
