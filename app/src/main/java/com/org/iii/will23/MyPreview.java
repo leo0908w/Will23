@@ -6,10 +6,6 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-/**
- * Created by user on 2016/11/23.
- */
-
 public class MyPreview extends SurfaceView implements SurfaceHolder.Callback {
     private Camera camera;
     private SurfaceHolder holder;
@@ -30,12 +26,20 @@ public class MyPreview extends SurfaceView implements SurfaceHolder.Callback {
         } catch (Exception e) {
             Log.v("will", "Preview Error");
         }
-
     }
 
     @Override
     public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {
-
+        try {
+            camera.stopPreview();
+        } catch (Exception e){
+        }
+        try {
+            camera.setPreviewDisplay(holder);
+            camera.startPreview();
+        } catch (Exception e){
+            Log.v("will", " 錯誤設定觀景窗 ");
+        }
     }
 
     @Override
